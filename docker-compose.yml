@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  chat-app-client:
+    container_name: chat-app-client
+    build: ./chat-app-client
+    volumes:
+      - './chat-app-client:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+
+  chat-app:
+    container_name: chat-app
+    build: ./chat-app
+    volumes:
+      - './chat-app:/usr/src/app'
+      - './chat-app/package.json:/usr/src/package.json'
+    ports:
+      - '4000:4000'
